@@ -5,7 +5,6 @@ public class PlayerTestMovement : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private FloatingJoystick _variableJoystick;
-    [SerializeField] private Rigidbody _rigidbody;
 
     private Evasion _evasion;
 
@@ -24,7 +23,7 @@ public class PlayerTestMovement : MonoBehaviour
         Vector3 direction = Vector3.forward * _variableJoystick.Vertical + Vector3.right * _variableJoystick.Horizontal;
         Vector3 nextPosition = _speed * Time.fixedDeltaTime * direction + transform.position;
 
-        if (_evasion.AbleToEvade(nextPosition))
-            transform.position = Vector3.MoveTowards(transform.position, nextPosition, Time.fixedDeltaTime);
+        Vector3 offset = nextPosition - _evasion.CenterPosition;
+        transform.position = _evasion.CenterPosition + Vector3.ClampMagnitude(offset, _evasion.MaxEvasionDistance);
     }
 }
