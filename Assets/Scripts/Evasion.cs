@@ -18,7 +18,7 @@ public class Evasion : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out ParabolicMovement movement))
+        if (other.TryGetComponent(out ParabolicMovementState movement))
             Debug.Log("Hit!");
     }
 }
