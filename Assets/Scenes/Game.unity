@@ -625,6 +625,7 @@ MonoBehaviour:
   _chanceToChooseHead: 70
   _speed: 1.1
   _speedModifier: 0.025
+  _sphereDirectionOffset: {x: 2, y: 0, z: 2}
   _raycastLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -717,7 +718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetState: {fileID: 737548388}
-  _turnTime: 0.4
+  _turnTime: 0.2
 --- !u!114 &737548394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -732,8 +733,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transitions:
   - {fileID: 737548393}
-  _turnSpeed: 10
-  _rotationCenter: {fileID: 777913272}
+  _turnSpeed: 300
+  _area: {fileID: 777913273}
+  _offset: {x: 0.2, y: 0, z: 0.2}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &737548395
 MonoBehaviour:
   m_ObjectHideFlags: 0

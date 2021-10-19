@@ -2,16 +2,19 @@
 
 public class TurnState : State
 {
-    private const int SpeedModifier = 10;
-
     [SerializeField] private float _turnSpeed;
-    [SerializeField] private Transform _rotationCenter;
+    [SerializeField] private CapsuleCollider _area;
+    [SerializeField] private Vector3 _offset;
+    [SerializeField] private LayerMask _layerMask;
 
-    private float _currentDegreesToTurn;
+    private Vector3 _rotationPoint;
+    private int _rotationDirection;
+
     private void OnEnable()
     {
-        float zDifference = _rotationCenter.position.z - transform.position.z;
-        _currentDegreesToTurn = zDifference > 0 ? _turnSpeed * SpeedModifier : -(_turnSpeed * SpeedModifier);
+        _rotationPoint = SetRotationPoint();
+
+        _rotationDirection = _rotationPoint.x > transform.position.x ? 1 : -1;
     }
 
     private void Update()
@@ -19,8 +22,20 @@ public class TurnState : State
         Turn();
     }
 
+    private Vector3 SetRotationPoint()
+    {
+        Vector3 newRotationPoint = transform.position;
+        newRotationPoint.x += Random.Range(0, 1) == 0 ? _offset.x : -_offset.x;
+        newRotationPoint.z += Random.Range(0, 1) == 0 ? _offset.z : -_offset.z;
+
+        newRotationPoint = ReversedRaycast.GetRaycastHitPosition(_area.center, newRotationPoint, _layerMask);
+        newRotationPoint.y = transform.position.y;
+
+        return newRotationPoint;
+    }
+
     private void Turn()
     {
-        transform.RotateAround(_rotationCenter.position, Vector3.up, _currentDegreesToTurn * Time.deltaTime);
+        transform.RotateAround(_rotationPoint, Vector3.up, _rotationDirection * _turnSpeed * Time.deltaTime);
     }
 }

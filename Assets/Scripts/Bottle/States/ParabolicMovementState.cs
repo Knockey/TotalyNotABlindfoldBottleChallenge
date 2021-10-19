@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ParabolicMovementState : State
 {
-    [SerializeField] private CapsuleCollider _area;
     [SerializeField] private List<Transform> _heads = new List<Transform>();
     [SerializeField] private AnimationCurve _parabolaCurve;
     [SerializeField] private float _chanceToChooseHead;
     [SerializeField] private float _speed;
     [SerializeField] private float _speedModifier;
+    [SerializeField] private Vector3 _sphereDirectionOffset;
     [SerializeField] private LayerMask _raycastLayer;
 
     private readonly List<Vector3> _directions = new List<Vector3>
@@ -63,14 +63,7 @@ public class ParabolicMovementState : State
     private void SetPositions(Vector3 direction)
     {
         _startPosition = transform.position;
-
-        Ray ray = new Ray(_startPosition, direction);
-        ray.origin = ray.GetPoint(100f);
-        ray.direction = -ray.direction;
-
-        Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, _raycastLayer);
-
-        _finalPosition = hit.point;
+        _finalPosition = ReversedRaycast.GetRaycastHitPosition(_startPosition, direction, _raycastLayer);
     }
 
     private Vector3 ChooseNewDirection()
@@ -93,7 +86,9 @@ public class ParabolicMovementState : State
 
     private Vector3 GetNewDirectionFromCapsule()
     {
-        Vector3 newDirection = _area.transform.position;
+        Vector3 newDirection = -transform.position;
+        newDirection.x += Random.Range(-_sphereDirectionOffset.x, _sphereDirectionOffset.x);
+        newDirection.z += Random.Range(-_sphereDirectionOffset.z, _sphereDirectionOffset.z);
 
         return newDirection - transform.position;
     }
