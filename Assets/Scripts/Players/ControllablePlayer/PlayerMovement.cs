@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Evasion))]
-public class PlayerTestMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private FloatingJoystick _variableJoystick;
