@@ -7,6 +7,7 @@ public class ParabolicMovementState : State
     [SerializeField] private List<Transform> _heads = new List<Transform>();
     [SerializeField] private AnimationCurve _parabolaCurve;
     [SerializeField] private float _chanceToChooseHead;
+    [SerializeField] private float _initialSpeed;
     [SerializeField] private float _speedModifier;
     [SerializeField] private Vector3 _sphereDirectionOffset;
     [SerializeField] private LayerMask _raycastLayer;
@@ -34,8 +35,8 @@ public class ParabolicMovementState : State
     private void OnEnable()
     {
         _direction = ChooseNewDirection();
-        _currentSpeed = 0.001f;
-        _movementTime = 0;
+        _currentSpeed = _initialSpeed;
+        _movementTime = 0f;
 
         SetPositions(_direction);
     }

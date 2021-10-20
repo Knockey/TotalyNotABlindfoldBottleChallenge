@@ -369,6 +369,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _chanceToChooseHead: 70
+  _initialSpeed: 0.1
   _speedModifier: 0.025
   _sphereDirectionOffset: {x: 2, y: 0, z: 2}
   _raycastLayer:
@@ -433,7 +434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95452bd2c03f564c938ee9ceed00151, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hitForce: 30
+  _hitForce: 500
 --- !u!114 &4125666188363044028
 MonoBehaviour:
   m_ObjectHideFlags: 0
