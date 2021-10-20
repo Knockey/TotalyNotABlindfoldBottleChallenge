@@ -1215,7 +1215,7 @@ GameObject:
   - component: {fileID: 7710492802008822838}
   - component: {fileID: 1395274248518164091}
   - component: {fileID: 1395274248518164090}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mexican_man
   m_TagString: Untagged
   m_Icon: {fileID: 0}

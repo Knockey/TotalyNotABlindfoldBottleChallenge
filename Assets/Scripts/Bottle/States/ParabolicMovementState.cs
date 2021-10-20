@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 
 public class ParabolicMovementState : State
 {
@@ -24,6 +24,8 @@ public class ParabolicMovementState : State
     private Vector3 _finalPosition;
     private float _currentSpeed;
     private float _movementTime;
+
+    public event UnityAction<Vector3, Vector3> ParabolicMovementStarted;
 
     private void Start()
     {
@@ -64,6 +66,8 @@ public class ParabolicMovementState : State
     {
         _startPosition = transform.position;
         _finalPosition = ReversedRaycast.GetRaycastHitPosition(_startPosition, direction, _raycastLayer);
+
+        ParabolicMovementStarted?.Invoke(_startPosition, _finalPosition);
     }
 
     private Vector3 ChooseNewDirection()

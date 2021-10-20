@@ -155,6 +155,7 @@ GameObject:
   - component: {fileID: 732396658736471226}
   - component: {fileID: 3087563684738788177}
   - component: {fileID: 4242631621786418740}
+  - component: {fileID: 1991687536080693238}
   m_Layer: 0
   m_Name: Mexican_man
   m_TagString: Untagged
@@ -304,6 +305,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9da3deaeb402d9948854f954a2262214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1991687536080693238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288802894541644557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba258339b7291964faab4807d346ac2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bottles: []
+  _chanceToEvade: 100
+  _evasionSpeed: 0
+  _headDirectionAngleDegree: 4
 --- !u!1 &519629363859246989
 GameObject:
   m_ObjectHideFlags: 0

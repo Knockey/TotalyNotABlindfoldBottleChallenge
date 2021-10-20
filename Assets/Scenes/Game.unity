@@ -934,6 +934,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 567021671}
     m_Modifications:
+    - target: {fileID: 4300454752658650170, guid: 9057000c3c6d0a248ae16fc3343c09f9,
+        type: 3}
+      propertyPath: _bottles.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300454752658650170, guid: 9057000c3c6d0a248ae16fc3343c09f9,
+        type: 3}
+      propertyPath: _bottles.Array.data[0]
+      value: 
+      objectReference: {fileID: 1849392690}
+    - target: {fileID: 4300454752658650170, guid: 9057000c3c6d0a248ae16fc3343c09f9,
+        type: 3}
+      propertyPath: _headDirectionAngleDegree
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6411664870979434469, guid: 9057000c3c6d0a248ae16fc3343c09f9,
         type: 3}
       propertyPath: m_RootOrder
@@ -996,6 +1011,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9057000c3c6d0a248ae16fc3343c09f9, type: 3}
+--- !u!114 &1849392690 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4125666188363044022, guid: e256e3aee9938ab45966aaba8b1bae3e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4125666187919887570}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e48016c5ea1f724f95224f478676bb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &83021801382845657
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1003,6 +1030,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1443265078}
     m_Modifications:
+    - target: {fileID: 4300454752658650170, guid: 9057000c3c6d0a248ae16fc3343c09f9,
+        type: 3}
+      propertyPath: _bottles.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300454752658650170, guid: 9057000c3c6d0a248ae16fc3343c09f9,
+        type: 3}
+      propertyPath: _bottles.Array.data[0]
+      value: 
+      objectReference: {fileID: 1849392690}
+    - target: {fileID: 4300454752658650170, guid: 9057000c3c6d0a248ae16fc3343c09f9,
+        type: 3}
+      propertyPath: _headDirectionAngleDegree
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6411664870979434469, guid: 9057000c3c6d0a248ae16fc3343c09f9,
         type: 3}
       propertyPath: m_RootOrder
@@ -1088,11 +1130,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bottle
       objectReference: {fileID: 0}
-    - target: {fileID: 4125666188363044016, guid: e256e3aee9938ab45966aaba8b1bae3e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4125666188363044017, guid: e256e3aee9938ab45966aaba8b1bae3e,
         type: 3}
       propertyPath: m_RootOrder
@@ -1173,11 +1210,6 @@ PrefabInstance:
       propertyPath: _snapPoint
       value: 
       objectReference: {fileID: 1062301795}
-    - target: {fileID: 4125666188363044031, guid: e256e3aee9938ab45966aaba8b1bae3e,
-        type: 3}
-      propertyPath: _hitForce
-      value: 500
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e256e3aee9938ab45966aaba8b1bae3e, type: 3}
 --- !u!1001 &5085116815458520985
