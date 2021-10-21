@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class AIEvasion : MonoBehaviour
+public class AIEvasion : EvasionMovement
 {
     [SerializeField] private List<ParabolicMovementState> _bottles;
     [SerializeField] private float _chanceToEvade;
     [SerializeField] private float _evasionSpeed;
     [SerializeField] private float _headDirectionAngleDegree;
+
+    private Vector3 _evasionDirection;
 
     private void OnEnable()
     {
@@ -24,15 +26,43 @@ public class AIEvasion : MonoBehaviour
         }
     }
 
-    private void OnParabolicMovementStarted(Vector3 startPosition, Vector3 finalPosition)
+    protected override void Update()
     {
-        if (Random.Range(0, 100) < _chanceToEvade && CheckIsHeadDirection(startPosition, finalPosition))
-        {
-            Debug.Log($"{gameObject.name}, IT GOES TO ME");
-        }
+        TryMove(_evasionDirection);
+        base.Update();
     }
 
-    private bool CheckIsHeadDirection(Vector3 startPosition, Vector3 finalPosition)
+    protected override void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out ParabolicMovementState bottle))
+            InvokeCollidedEvent(this);
+    }
+
+    private void OnParabolicMovementStarted(Vector3 startPosition, Vector3 finalPosition)
+    {
+        if (Random.Range(0, 100) < _chanceToEvade && CheckDirectionTowardsHead(startPosition, finalPosition))
+        {
+            _evasionDirection = GetEvasionDirection(startPosition, finalPosition); 
+
+            return;
+        }
+
+        _evasionDirection = Vector3.zero;
+    }
+
+    private static Vector3 GetEvasionDirection(Vector3 startPosition, Vector3 finalPosition)
+    {
+        Vector3 direction = (finalPosition - startPosition).normalized;
+        float xDirection = direction.x;
+
+        direction.x = direction.z;
+        direction.y = 0f;
+        direction.z = xDirection;
+
+        return direction;
+    }
+
+    private bool CheckDirectionTowardsHead(Vector3 startPosition, Vector3 finalPosition)
     {
         Vector3 toFinalPositionDirection = finalPosition - startPosition;
         Vector3 toHeadDirection = transform.position - startPosition;

@@ -317,10 +317,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba258339b7291964faab4807d346ac2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _upperTorso: {fileID: 3066323417894523058}
+  _maxEvasionDistance: 0.5
+  _speed: 3
   _bottles: []
   _chanceToEvade: 100
   _evasionSpeed: 0
-  _headDirectionAngleDegree: 4
+  _headDirectionAngleDegree: 10
 --- !u!1 &519629363859246989
 GameObject:
   m_ObjectHideFlags: 0

@@ -60,6 +60,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: AIChairman
       objectReference: {fileID: 0}
+    - target: {fileID: 1991687536080693238, guid: 4857ab77ad12aa7429240fab0f3c411f,
+        type: 3}
+      propertyPath: _returnSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1991687536080693238, guid: 4857ab77ad12aa7429240fab0f3c411f,
+        type: 3}
+      propertyPath: _bottles.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3900388998301562309, guid: 4857ab77ad12aa7429240fab0f3c411f,
         type: 3}
       propertyPath: m_RootOrder

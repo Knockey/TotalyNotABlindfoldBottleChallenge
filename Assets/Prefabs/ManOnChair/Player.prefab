@@ -372,8 +372,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1395274248518164091, guid: 1e2c82c46563bb540aaff1b34d4b8f7a,
         type: 3}
+      propertyPath: _returnSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1395274248518164091, guid: 1e2c82c46563bb540aaff1b34d4b8f7a,
+        type: 3}
       propertyPath: _variableJoystick
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1395274248518164091, guid: 1e2c82c46563bb540aaff1b34d4b8f7a,
+        type: 3}
+      propertyPath: _maxEvasionDistance
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5880109409834094036, guid: 1e2c82c46563bb540aaff1b34d4b8f7a,
         type: 3}
@@ -435,7 +445,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1395274248518164090, guid: 1e2c82c46563bb540aaff1b34d4b8f7a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1e2c82c46563bb540aaff1b34d4b8f7a, type: 3}
 --- !u!4 &3497960629497834221 stripped
 Transform:
