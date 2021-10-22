@@ -13,10 +13,10 @@ namespace IJunior.TypedScenes
     using UnityEngine.SceneManagement;
     
     
-    public class Game : TypedScene
+    public class Level1 : TypedScene
     {
         
-        private const string _sceneName = "Game";
+        private const string _sceneName = "Level1";
         
         public static void Load(LoadSceneMode loadSceneMode = LoadSceneMode.Single)
         {

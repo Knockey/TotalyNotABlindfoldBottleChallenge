@@ -12,12 +12,12 @@ public class HitHandle : MonoBehaviour
 
     private void OnEnable()
     {
-        _detection.ColliderHited += OnColliderHited;
+        _detection.ColliderHitedInDirection += OnColliderHited;
     }
 
     private void OnDisable()
     {
-        _detection.ColliderHited -= OnColliderHited;
+        _detection.ColliderHitedInDirection -= OnColliderHited;
     }
 
     private void OnColliderHited(Vector3 direction, float hitForce, GameObject sender)

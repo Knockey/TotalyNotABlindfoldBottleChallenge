@@ -32,12 +32,6 @@ public class AIEvasion : EvasionMovement
         base.Update();
     }
 
-    protected override void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent(out ParabolicMovementState bottle))
-            InvokeCollidedEvent(this);
-    }
-
     private void OnParabolicMovementStarted(Vector3 startPosition, Vector3 finalPosition)
     {
         if (Random.Range(0, 100) < _chanceToEvade && CheckDirectionTowardsHead(startPosition, finalPosition))

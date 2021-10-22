@@ -2,15 +2,19 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
+[RequireComponent(typeof(EvasionMovement))]
 public class HitDetection : MonoBehaviour
 {
+    private EvasionMovement _movement;
     private Collider _hitCollider;
 
-    public event Action<Vector3, float,  GameObject> ColliderHited;
+    public event Action<Vector3, float, GameObject> ColliderHitedInDirection;
+    public event Action<EvasionMovement> ColliderHitedWithType;
 
     private void Awake()
     {
         _hitCollider = GetComponent<Collider>();
+        _movement = GetComponent<EvasionMovement>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -21,7 +25,8 @@ public class HitDetection : MonoBehaviour
 
             Vector3 direction = transform.position - bottle.transform.position;
 
-            ColliderHited?.Invoke(direction, bottle.HitForce, transform.parent.gameObject);
+            ColliderHitedInDirection?.Invoke(direction, bottle.HitForce, transform.parent.gameObject);
+            ColliderHitedWithType?.Invoke(_movement);
         }
     }
 }

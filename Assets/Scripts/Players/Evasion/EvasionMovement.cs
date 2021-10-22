@@ -13,8 +13,6 @@ public class EvasionMovement : MonoBehaviour
     private Vector3 _currentEvasionDirection;
     private float _currentReturnSpeed;
 
-    public event Action<EvasionMovement> Collided;
-
     private void Awake()
     {
         _headColliderCenter = transform.position;
@@ -26,13 +24,6 @@ public class EvasionMovement : MonoBehaviour
     {
         SetReturnSpeed();
         TryReturnToCenterPosition();
-    }
-
-    protected virtual void OnTriggerEnter(Collider other) { }
-
-    protected void InvokeCollidedEvent(EvasionMovement sender)
-    {
-        Collided?.Invoke(sender);
     }
 
     protected void TryMove(Vector3 direction)

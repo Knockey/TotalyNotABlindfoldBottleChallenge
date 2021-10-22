@@ -1214,7 +1214,6 @@ GameObject:
   - component: {fileID: 8879071458477367635}
   - component: {fileID: 7710492802008822838}
   - component: {fileID: 1395274248518164091}
-  - component: {fileID: 1395274248518164090}
   m_Layer: 9
   m_Name: Mexican_man
   m_TagString: Untagged
@@ -1364,6 +1363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9da3deaeb402d9948854f954a2262214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _movement: {fileID: 0}
 --- !u!114 &1395274248518164091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1376,22 +1376,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a37d705c8e9115e439ec799186182634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 3
-  _variableJoystick: {fileID: 0}
   _upperTorso: {fileID: 8893538639196887728}
---- !u!114 &1395274248518164090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6189069663529888015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aee124818877dd84596959b9dfd8d99b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxEvasionDistance: 0.5
+  _maxEvasionDistance: 0
+  _speed: 3
+  _returnSpeed: 0
+  _variableJoystick: {fileID: 0}
 --- !u!1 &6204377180163606716
 GameObject:
   m_ObjectHideFlags: 0
