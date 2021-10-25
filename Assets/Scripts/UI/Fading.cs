@@ -26,11 +26,6 @@ public class Fading : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        StartCoroutine(BecomeFullyVisible());
-    }
-
     public void BecomeFullyFaded()
     {
         _image.raycastTarget = true;

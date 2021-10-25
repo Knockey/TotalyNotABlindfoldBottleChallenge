@@ -1,13 +1,25 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BottleCollisionWatchdog : MonoBehaviour
+public class PlayersConditionWatchdog : MonoBehaviour
 {
     [SerializeField] private List<HitDetection> _players = new List<HitDetection>();
+    
+    private int _countOfAI;
+    private int _deadAICount;
+
+    public event Action PlayedWon;
+    public event Action AIWon;
 
     private void OnEnable()
     {
+        _deadAICount = 0;
+        _countOfAI = 0;
+
+        GetAICount();
+
         foreach (var player in _players)
         {
             player.ColliderHitedWithType += OnCollisionHitWithType;
@@ -27,12 +39,29 @@ public class BottleCollisionWatchdog : MonoBehaviour
         switch (movementType)
         {
             case AIEvasion movement:
-                Debug.Log(movement.GetType());
+                CheckAliveAI();
                 break;
 
             case PlayerEvasionMovement movement:
-                Debug.Log(movement.GetType());
+                AIWon?.Invoke();
                 break;
+        }
+    }
+
+    private void CheckAliveAI()
+    {
+        _deadAICount++;
+
+        if (_deadAICount == _countOfAI)
+            PlayedWon?.Invoke();
+    }
+
+    private void GetAICount()
+    {
+        foreach (var player in _players)
+        {
+            if (player.TryGetComponent(out AIEvasion evasion))
+                _countOfAI++;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -6,6 +7,7 @@ using UnityEngine.UI;
 public class SceneLoadButton : MonoBehaviour
 {
     [SerializeField] private Object _sceneToLoad;
+    [SerializeField] private Fading _fadePanel;
 
     private Button _restartButton;
 
@@ -24,6 +26,16 @@ public class SceneLoadButton : MonoBehaviour
     }
     private void OnLoadLevelButtonClick()
     {
+        StartCoroutine(LoadWithFade());
+    }
+
+    private IEnumerator LoadWithFade()
+    {
+        _fadePanel.gameObject.SetActive(true);
+        _fadePanel.BecomeFullyFaded();
+
+        yield return new WaitForSeconds(_fadePanel.AnimationTime);
+
         SceneManager.LoadScene(_sceneToLoad.name);
     }
 }
