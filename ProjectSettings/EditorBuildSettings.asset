@@ -17,10 +17,4 @@ EditorBuildSettings:
   - enabled: 1
     path: 
     guid: 5192fb7ee619ba3438fa03702e516cd4
-  - enabled: 1
-    path: Assets/Cope! Free Skybox Pack/example.unity
-    guid: 97b8fd93761dd496a851b542dc77cec8
-  - enabled: 1
-    path: Assets/CactusPack/Scenes/CactusPack_MiniScene.unity
-    guid: 70f6d83a4ef81b24da7ea9d4df97c331
   m_configObjects: {}
