@@ -370,10 +370,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9105386880202455809}
     m_Modifications:
+    - target: {fileID: 1395274248518164091, guid: 1e2c82c46563bb540aaff1b34d4b8f7a,
+        type: 3}
+      propertyPath: _upperTorsoEvasionModifier
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 5880109409834094036, guid: 1e2c82c46563bb540aaff1b34d4b8f7a,
         type: 3}
       propertyPath: m_Name
       value: PlayerChairman
+      objectReference: {fileID: 0}
+    - target: {fileID: 5880109409834094036, guid: 1e2c82c46563bb540aaff1b34d4b8f7a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7476258515510706119, guid: 1e2c82c46563bb540aaff1b34d4b8f7a,
         type: 3}
@@ -552,6 +562,31 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.x
       value: -0.39021793
       objectReference: {fileID: 0}
+    - target: {fileID: 5023585289882940702, guid: f51c4f0f935e0b1478ca98d2701e23a4,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.2887517
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023585289882940702, guid: f51c4f0f935e0b1478ca98d2701e23a4,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023585289882940702, guid: f51c4f0f935e0b1478ca98d2701e23a4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.957404
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023585289882940702, guid: f51c4f0f935e0b1478ca98d2701e23a4,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023585289882940702, guid: f51c4f0f935e0b1478ca98d2701e23a4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 213.566
+      objectReference: {fileID: 0}
     - target: {fileID: 6189668176270362640, guid: f51c4f0f935e0b1478ca98d2701e23a4,
         type: 3}
       propertyPath: m_RootOrder
@@ -611,6 +646,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ChairmanRagdoll
+      objectReference: {fileID: 0}
+    - target: {fileID: 7345235770733748072, guid: f51c4f0f935e0b1478ca98d2701e23a4,
+        type: 3}
+      propertyPath: _rotationAngle
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f51c4f0f935e0b1478ca98d2701e23a4, type: 3}

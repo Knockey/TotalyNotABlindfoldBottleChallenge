@@ -5,6 +5,7 @@ public class EvasionMovement : MonoBehaviour
 {
     [SerializeField] private Transform _upperTorso;
     [SerializeField] private float _maxEvasionDistance;
+    [SerializeField] private float _upperTorsoEvasionModifier; 
     [SerializeField] private float _speed;
     [SerializeField] private float _returnSpeed;
 
@@ -20,6 +21,12 @@ public class EvasionMovement : MonoBehaviour
         _currentReturnSpeed = _returnSpeed;
     }
 
+    private void OnValidate()
+    {
+        if (_upperTorsoEvasionModifier > 1 || _upperTorsoEvasionModifier < 0)
+            _upperTorsoEvasionModifier = 1;
+    }
+
     protected virtual void Update()
     {
         SetReturnSpeed();
@@ -32,7 +39,7 @@ public class EvasionMovement : MonoBehaviour
         Vector3 nextPositionOffset = _speed * Time.fixedDeltaTime * direction;
 
         transform.position = _headColliderCenter + GetEvasionDistance(_headColliderCenter, transform.position, nextPositionOffset);
-        _upperTorso.position = _upperTorsoCenter + GetEvasionDistance(_upperTorsoCenter, _upperTorso.position, nextPositionOffset);
+        _upperTorso.position = _upperTorsoCenter + GetEvasionDistance(_upperTorsoCenter, _upperTorso.position, nextPositionOffset) * _upperTorsoEvasionModifier;
     }
 
     private void SetReturnSpeed()
