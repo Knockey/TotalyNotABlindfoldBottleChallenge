@@ -132,6 +132,11 @@ PrefabInstance:
       propertyPath: _fadePanel
       value: 
       objectReference: {fileID: 2624969011073648764}
+    - target: {fileID: 3320663686066275063, guid: c527da672c38fc74689c3ac4867860f6,
+        type: 3}
+      propertyPath: _sceneToLoad
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3320663686066275064, guid: c527da672c38fc74689c3ac4867860f6,
         type: 3}
       propertyPath: m_Pivot.x
@@ -262,6 +267,11 @@ PrefabInstance:
       propertyPath: _fadePanel
       value: 
       objectReference: {fileID: 2624969011073648764}
+    - target: {fileID: 2891007557236418785, guid: 94204536ed6678d4fbf29690f5a56354,
+        type: 3}
+      propertyPath: _sceneToLoad
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2891007557359338704, guid: 94204536ed6678d4fbf29690f5a56354,
         type: 3}
       propertyPath: m_Name
@@ -830,6 +840,11 @@ PrefabInstance:
       propertyPath: _fadePanel
       value: 
       objectReference: {fileID: 2624969011073648764}
+    - target: {fileID: 6900996547660887647, guid: 93fa5fa31bd0ec240b6f7f29f34d48a3,
+        type: 3}
+      propertyPath: _sceneToLoad
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6900996548404967289, guid: 93fa5fa31bd0ec240b6f7f29f34d48a3,
         type: 3}
       propertyPath: m_Pivot.x
