@@ -46,11 +46,8 @@ public class ParabolicMovementState : State
     private void Update()
     {
         MoveTowardsDirection();
-    }
 
-    private void FixedUpdate()
-    {
-        _currentSpeed += _speedModifier;
+        _currentSpeed += _speedModifier * Time.deltaTime;
     }
 
     private void MoveTowardsDirection()

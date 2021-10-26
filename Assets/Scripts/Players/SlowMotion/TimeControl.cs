@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TimeControl : MonoBehaviour
 {
     [SerializeField] private float _slowMotionDistance;
     [SerializeField] private float _minTimeScale;
-    [SerializeField] private BottleApproachHandler _bottleApproachHandler;
+    [SerializeField] private BottleApproachHandle _bottleApproachHandler;
     [SerializeField] private HitDetection _hitDetection;
     [SerializeField] private TapPanel _tapPanel;
 

@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
-public class BottleApproachHandler : MonoBehaviour
+public class BottleApproachHandle : MonoBehaviour
 {
     private Bottle _bottle;
 
