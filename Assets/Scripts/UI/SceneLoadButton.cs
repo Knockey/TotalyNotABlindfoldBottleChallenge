@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class SceneLoadButton : MonoBehaviour
 {
-    [SerializeField] private Object _sceneToLoad;
+    [SerializeField] private string _sceneToLoad;
     [SerializeField] private Fading _fadePanel;
 
     private Button _restartButton;
@@ -34,8 +34,10 @@ public class SceneLoadButton : MonoBehaviour
         _fadePanel.gameObject.SetActive(true);
         _fadePanel.BecomeFullyFaded();
 
+        PlayerPrefs.SetString("Current scene", _sceneToLoad);
+
         yield return new WaitForSeconds(_fadePanel.AnimationTime);
 
-        SceneManager.LoadScene(_sceneToLoad.name);
+        SceneManager.LoadScene(_sceneToLoad);
     }
 }

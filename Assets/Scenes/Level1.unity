@@ -949,9 +949,8 @@ PrefabInstance:
     - target: {fileID: 2624969009801248885, guid: f3e3f53832301534ab509a0f6861e9b7,
         type: 3}
       propertyPath: _sceneToLoad
-      value: 
-      objectReference: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab,
-        type: 3}
+      value: Level1
+      objectReference: {fileID: 0}
     - target: {fileID: 2624969010245408672, guid: f3e3f53832301534ab509a0f6861e9b7,
         type: 3}
       propertyPath: _watchdog
@@ -1067,18 +1066,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2624969010245408677, guid: f3e3f53832301534ab509a0f6861e9b7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2624969010404364631, guid: f3e3f53832301534ab509a0f6861e9b7,
         type: 3}
       propertyPath: _sceneToLoad
-      value: 
-      objectReference: {fileID: 102900000, guid: 0078efe914c4ff24aa11ef34fdd23251,
-        type: 3}
+      value: Level2
+      objectReference: {fileID: 0}
     - target: {fileID: 2624969011339058445, guid: f3e3f53832301534ab509a0f6861e9b7,
         type: 3}
       propertyPath: _sceneToLoad
-      value: 
-      objectReference: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab,
-        type: 3}
+      value: Level1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3e3f53832301534ab509a0f6861e9b7, type: 3}
 --- !u!4 &3095511526611825779
