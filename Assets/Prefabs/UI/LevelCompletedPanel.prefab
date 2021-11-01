@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4a691beba44254b8e89cdb7cae1b2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneToLoad: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+  _sceneToLoad: 
   _fadePanel: {fileID: 0}
 --- !u!1 &6900996548275551298
 GameObject:
