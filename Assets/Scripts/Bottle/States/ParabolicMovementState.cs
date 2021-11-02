@@ -5,9 +5,9 @@ using UnityEngine.Events;
 public class ParabolicMovementState : State
 {
     [SerializeField] private List<Transform> _heads = new List<Transform>();
-    [SerializeField] private AnimationCurve _parabolaCurve;
     [SerializeField] private float _chanceToChooseHead;
-    [SerializeField] private float _initialSpeed;
+    [SerializeField] private AnimationCurve _parabolaCurve;
+    [SerializeField] private AnimationCurve _acceleration;
     [SerializeField] private float _speedModifier;
     [SerializeField] private Vector3 _sphereDirectionOffset;
     [SerializeField] private LayerMask _raycastLayer;
@@ -22,10 +22,20 @@ public class ParabolicMovementState : State
     private Vector3 _direction;
     private Vector3 _startPosition;
     private Vector3 _finalPosition;
-    private float _currentSpeed;
-    private float _movementTime;
+    private float _parabolaLength;
+    private float _defaultYPosition;
 
     public event UnityAction<Vector3, Vector3> ParabolicMovementStarted;
+
+    private void Awake()
+    {
+        _defaultYPosition = transform.position.y;
+    }
+
+    private void OnEnable()
+    {
+        ResetBottle();
+    }
 
     private void Start()
     {
@@ -34,27 +44,32 @@ public class ParabolicMovementState : State
         SetPositions(_direction);
     }
 
-    private void OnEnable()
+    private void Update()
+    {
+        MoveTowardsDirection();
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent(out BottleFlyArea area))
+            ResetBottle();
+    }
+
+    private void ResetBottle()
     {
         _direction = ChooseNewDirection();
-        _currentSpeed = _initialSpeed;
-        _movementTime = 0f;
 
         SetPositions(_direction);
     }
 
-    private void Update()
-    {
-        MoveTowardsDirection();
-
-        _currentSpeed += _speedModifier * Time.deltaTime;
-    }
-
     private void MoveTowardsDirection()
     {
-        _movementTime += Time.deltaTime;
-        Vector3 nextPosition = Vector3.Lerp(_startPosition, _finalPosition + _direction, _movementTime * _currentSpeed);
-        nextPosition.y += _parabolaCurve.Evaluate(_movementTime * _currentSpeed);
+        float passedDistance = GetNormalizedPassedDistance();
+        float normalizedRemainDistance = (_parabolaLength - passedDistance) / _parabolaLength;
+
+        float speed = (_acceleration.Evaluate(normalizedRemainDistance) + _speedModifier);
+        Vector3 nextPosition = Vector3.MoveTowards(transform.position, _finalPosition + _direction, Time.deltaTime * speed);
+        nextPosition.y = _defaultYPosition + _parabolaCurve.Evaluate(normalizedRemainDistance);
 
         transform.position = nextPosition;
     }
@@ -63,8 +78,14 @@ public class ParabolicMovementState : State
     {
         _startPosition = transform.position;
         _finalPosition = ReversedRaycast.GetRaycastHitPosition(_startPosition, direction, _raycastLayer);
+        _parabolaLength = Vector3.Distance(_startPosition, _finalPosition);
 
         ParabolicMovementStarted?.Invoke(_startPosition, _finalPosition);
+    }
+
+    private float GetNormalizedPassedDistance()
+    {
+        return Vector3.Distance(transform.position, _finalPosition);
     }
 
     private Vector3 ChooseNewDirection()
