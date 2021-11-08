@@ -29,10 +29,13 @@ public class EvasionMovement : MonoBehaviour
     protected void TryMove(Vector3 direction)
     {
         _currentEvasionDirection = direction;
-        Vector3 nextPositionOffset = _speed * Time.fixedDeltaTime * direction;
+        Vector3 nextPositionOffset = _speed * Time.deltaTime * direction;
 
-        transform.position = _headColliderCenter + GetEvasionDistance(_headColliderCenter, transform.position, nextPositionOffset);
-        _upperTorso.position = _upperTorsoCenter + GetEvasionDistance(_upperTorsoCenter, _upperTorso.position, nextPositionOffset);
+        Vector3 headNextPosition = _headColliderCenter + GetEvasionDistance(_headColliderCenter, transform.position, nextPositionOffset);
+        Vector3 upperTorsoNextPosition = _upperTorsoCenter + GetEvasionDistance(_upperTorsoCenter, _upperTorso.position, nextPositionOffset);
+
+        transform.position = Vector3.MoveTowards(transform.position, headNextPosition, _speed * Time.deltaTime);
+        _upperTorso.position = Vector3.MoveTowards(_upperTorso.position, upperTorsoNextPosition, _speed * Time.deltaTime);
     }
 
     private void SetReturnSpeed()

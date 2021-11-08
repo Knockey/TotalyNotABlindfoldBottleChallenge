@@ -25,7 +25,9 @@ public class ParabolicMovementState : State
     private float _parabolaLength;
     private float _defaultYPosition;
 
-    public event UnityAction<Vector3, Vector3> ParabolicMovementStarted;
+    public event System.Action<Vector3, Vector3> ParabolicMovementStarted;
+    public event System.Action<float> RemainDistanceChanged;
+    public event System.Action BottleReseted;
 
     private void Awake()
     {
@@ -60,6 +62,8 @@ public class ParabolicMovementState : State
         _direction = ChooseNewDirection();
 
         SetPositions(_direction);
+
+        BottleReseted?.Invoke();
     }
 
     private void MoveTowardsDirection()
@@ -68,6 +72,8 @@ public class ParabolicMovementState : State
         float normalizedRemainDistance = (_parabolaLength - passedDistance) / _parabolaLength;
 
         float speed = (_acceleration.Evaluate(normalizedRemainDistance) + _speedModifier);
+        RemainDistanceChanged?.Invoke(normalizedRemainDistance);
+
         Vector3 nextPosition = Vector3.MoveTowards(transform.position, _finalPosition + _direction, Time.deltaTime * speed);
         nextPosition.y = _defaultYPosition + _parabolaCurve.Evaluate(normalizedRemainDistance);
 
