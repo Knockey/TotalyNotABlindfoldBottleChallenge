@@ -4,9 +4,10 @@ public class PlayerEvasionMovement : EvasionMovement
 {
     [SerializeField] private FloatingJoystick _variableJoystick;
 
-    private void FixedUpdate()
+    protected override void Update()
     {
         TryGetDirection();
+        base.Update();
     }
 
     private void TryGetDirection()

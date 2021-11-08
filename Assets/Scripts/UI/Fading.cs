@@ -31,13 +31,4 @@ public class Fading : MonoBehaviour
         _image.raycastTarget = true;
         _image.DOFade(_absoluteFadeValue, _animationTime);
     }
-
-    public IEnumerator BecomeFullyVisible()
-    {
-        _image.DOFade(0f, _animationTime);
-
-        yield return new WaitForSeconds(_animationTime);
-
-        _image.raycastTarget = false;
-    }
 }

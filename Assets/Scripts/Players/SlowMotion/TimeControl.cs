@@ -36,31 +36,37 @@ public class TimeControl : MonoBehaviour
     {
         if (distance < _slowMotionDistance)
         {
-            Time.timeScale = _minTimeScale;
+            SetTimeScale(_minTimeScale);
             return;
         }
 
-        Time.timeScale = 1;
+        SetTimeScale(1f);
     }
 
     private void OnBottleFlewAway()
     {
-        Time.timeScale = 1;
+        SetTimeScale(1f);
     }
 
     private void OnColliderHitedWithType(EvasionMovement movement)
     {
         if (movement is PlayerEvasionMovement)
-            Time.timeScale = 1;
+            SetTimeScale(1f);
     }
 
     private void OnTapPanelEnabled()
     {
-        Time.timeScale = 0;
+        SetTimeScale(0f);
     }
 
     private void OnPanelTaped()
     {
-        Time.timeScale = 1;
+        SetTimeScale(1f);
+    }
+
+    private void SetTimeScale(float scaleValue)
+    {
+        Time.timeScale = scaleValue;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
     }
 }

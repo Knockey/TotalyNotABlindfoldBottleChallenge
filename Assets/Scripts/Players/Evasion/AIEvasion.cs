@@ -5,7 +5,6 @@ public class AIEvasion : EvasionMovement
 {
     [SerializeField] private List<ParabolicMovementState> _bottles;
     [SerializeField] private float _chanceToEvade;
-    [SerializeField] private float _evasionSpeed;
     [SerializeField] private float _headDirectionAngleDegree;
 
     private Vector3 _evasionDirection;
@@ -49,7 +48,7 @@ public class AIEvasion : EvasionMovement
         Vector3 direction = (finalPosition - startPosition).normalized;
         float xDirection = direction.x;
 
-        direction.x = direction.z;
+        direction.x = -1 * direction.z;
         direction.y = 0f;
         direction.z = xDirection;
 

@@ -1601,7 +1601,7 @@ MonoBehaviour:
       outWeight: 0.27464387
     - serializedVersion: 3
       time: 0.030625805
-      value: 0.99706113
+      value: 0.6
       inSlope: 0.014232632
       outSlope: 0.014232632
       tangentMode: 0
@@ -1610,7 +1610,7 @@ MonoBehaviour:
       outWeight: 0.12847598
     - serializedVersion: 3
       time: 0.9076761
-      value: 0.8018849
+      value: 0.45
       inSlope: -1.0426677
       outSlope: -1.0426677
       tangentMode: 0
@@ -1641,9 +1641,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 61fb5db9ec98f074da49d8c756b6d91e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4cfd54bc34d24a94881d681563c98245, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2326,6 +2326,16 @@ PrefabInstance:
       propertyPath: _bottles.Array.data[0]
       value: 
       objectReference: {fileID: 737548388}
+    - target: {fileID: 2828664754169924343, guid: 4f83911044979a04488f237a92af015e,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.8140874
+      objectReference: {fileID: 0}
+    - target: {fileID: 2828664754169924343, guid: 4f83911044979a04488f237a92af015e,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 1.1939211
+      objectReference: {fileID: 0}
     - target: {fileID: 5861034731823764123, guid: 4f83911044979a04488f237a92af015e,
         type: 3}
       propertyPath: m_Name
@@ -7533,10 +7543,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 791491027}
     m_Modifications:
-    - target: {fileID: 3297125886609928862, guid: 6f5c2960b0a15364fa3a78a38d912faa,
+    - target: {fileID: 1155048780925323543, guid: 6f5c2960b0a15364fa3a78a38d912faa,
         type: 3}
-      propertyPath: m_Name
-      value: PlayerRagdoll
+      propertyPath: m_Size.y
+      value: 1.8029512
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155048780925323543, guid: 6f5c2960b0a15364fa3a78a38d912faa,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 1.1994891
       objectReference: {fileID: 0}
     - target: {fileID: 6146695331164431177, guid: 6f5c2960b0a15364fa3a78a38d912faa,
         type: 3}

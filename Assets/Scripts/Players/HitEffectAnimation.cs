@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class RotatingCactuses : MonoBehaviour
+public class HitEffectAnimation : MonoBehaviour
 {
     [SerializeField] private float _rotationAngle;
 

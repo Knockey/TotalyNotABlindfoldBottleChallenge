@@ -61,8 +61,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.6537876, y: 1.7330567, z: 2.2128696}
-  m_Center: {x: -0.033612646, y: 1.2344364, z: 0.05479594}
+  m_Size: {x: 2.6537876, y: 1.6964362, z: 2.2128696}
+  m_Center: {x: -0.033612646, y: 1.2527467, z: 0.05479594}
 --- !u!1 &7444625365785412594
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,7 +203,6 @@ GameObject:
   - component: {fileID: 8750577906398238444}
   - component: {fileID: 3127861904775338282}
   - component: {fileID: 7723649891991917871}
-  - component: {fileID: 4746247652098525176}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -274,19 +273,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4746247652098525176
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8647103035089430226}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.0000005, y: 6.049853, z: 1.0000004}
-  m_Center: {x: 0, y: -2.5249286, z: 0}
 --- !u!1001 &479584058435528985
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -394,7 +380,7 @@ PrefabInstance:
     - target: {fileID: 5691093156079015820, guid: 254acb213c18424468961b80d7d93ba7,
         type: 3}
       propertyPath: m_Name
-      value: ChairmanRagdoll
+      value: PlayerRagdoll
       objectReference: {fileID: 0}
     - target: {fileID: 8692381357871588767, guid: 254acb213c18424468961b80d7d93ba7,
         type: 3}
