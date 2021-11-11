@@ -6500,9 +6500,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8000332843987981081, guid: 6f5c2960b0a15364fa3a78a38d912faa,
         type: 3}
+      propertyPath: _hips
+      value: 
+      objectReference: {fileID: 4676014839192962662}
+    - target: {fileID: 8000332843987981081, guid: 6f5c2960b0a15364fa3a78a38d912faa,
+        type: 3}
       propertyPath: _variableJoystick
       value: 
       objectReference: {fileID: 2328701246749625066}
+    - target: {fileID: 8000332843987981081, guid: 6f5c2960b0a15364fa3a78a38d912faa,
+        type: 3}
+      propertyPath: _spineBend.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000332843987981081, guid: 6f5c2960b0a15364fa3a78a38d912faa,
+        type: 3}
+      propertyPath: _spineBend.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000332843987981081, guid: 6f5c2960b0a15364fa3a78a38d912faa,
+        type: 3}
+      propertyPath: _spineBend.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000332843987981081, guid: 6f5c2960b0a15364fa3a78a38d912faa,
+        type: 3}
+      propertyPath: _spineBend.m_Curve.Array.data[0].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000332843987981081, guid: 6f5c2960b0a15364fa3a78a38d912faa,
+        type: 3}
+      propertyPath: _spineBend.m_Curve.Array.data[0].outSlope
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8167336428219639577, guid: 6f5c2960b0a15364fa3a78a38d912faa,
         type: 3}
       propertyPath: m_Name
@@ -6858,9 +6888,39 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1591833352315507988, guid: 4f83911044979a04488f237a92af015e,
         type: 3}
+      propertyPath: _hips
+      value: 
+      objectReference: {fileID: 4676014839192962662}
+    - target: {fileID: 1591833352315507988, guid: 4f83911044979a04488f237a92af015e,
+        type: 3}
       propertyPath: _bottles.Array.data[0]
       value: 
       objectReference: {fileID: 5851023520050513999}
+    - target: {fileID: 1591833352315507988, guid: 4f83911044979a04488f237a92af015e,
+        type: 3}
+      propertyPath: _spineBend.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591833352315507988, guid: 4f83911044979a04488f237a92af015e,
+        type: 3}
+      propertyPath: _spineBend.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591833352315507988, guid: 4f83911044979a04488f237a92af015e,
+        type: 3}
+      propertyPath: _spineBend.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591833352315507988, guid: 4f83911044979a04488f237a92af015e,
+        type: 3}
+      propertyPath: _spineBend.m_Curve.Array.data[0].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591833352315507988, guid: 4f83911044979a04488f237a92af015e,
+        type: 3}
+      propertyPath: _spineBend.m_Curve.Array.data[0].outSlope
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2828664754169924343, guid: 4f83911044979a04488f237a92af015e,
         type: 3}
       propertyPath: m_Size.y
@@ -6938,6 +6998,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f83911044979a04488f237a92af015e, type: 3}
+--- !u!4 &705321172186952972 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8449830331597264587, guid: 4f83911044979a04488f237a92af015e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8974018417785758663}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4676014839192962662 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4354581222511584673, guid: 4f83911044979a04488f237a92af015e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8974018417785758663}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5466936250140126993 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3986930015406132438, guid: 4f83911044979a04488f237a92af015e,
@@ -6950,12 +7022,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9da3deaeb402d9948854f954a2262214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &705321172186952972 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8449830331597264587, guid: 4f83911044979a04488f237a92af015e,
-    type: 3}
-  m_PrefabInstance: {fileID: 8974018417785758663}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9020280112220498023
 PrefabInstance:
   m_ObjectHideFlags: 0
