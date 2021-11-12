@@ -1294,15 +1294,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba258339b7291964faab4807d346ac2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _upperTorso: {fileID: 9009723078212805939}
+  _spineParts: []
+  _hips: {fileID: 0}
   _maxEvasionDistance: 0.5
+  _spineBend:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   _speed: 3
   _returnSpeed: 1
+  _spine: {fileID: 5932548858830987030}
+  _maxRotationAngle: 60
+  _rotationSpeed: 10
   _bottles:
   - {fileID: 0}
-  _chanceToEvade: 70
-  _evasionSpeed: 0
-  _headDirectionAngleDegree: 10
+  _chanceToEvade: 100
+  _headDirectionAngleDegree: 5
 --- !u!1 &6099132392841777870
 GameObject:
   m_ObjectHideFlags: 0
@@ -1418,7 +1427,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6340678465944957527}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0069999993, y: 1.7919999, z: -0.25100005}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:

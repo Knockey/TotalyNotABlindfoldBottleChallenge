@@ -134,9 +134,29 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1591833352315507988, guid: 4f83911044979a04488f237a92af015e,
         type: 3}
+      propertyPath: _bottles.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591833352315507988, guid: 4f83911044979a04488f237a92af015e,
+        type: 3}
       propertyPath: _bottles.Array.data[0]
       value: 
       objectReference: {fileID: 5851023519678664750}
+    - target: {fileID: 1591833352315507988, guid: 4f83911044979a04488f237a92af015e,
+        type: 3}
+      propertyPath: _bottles.Array.data[1]
+      value: 
+      objectReference: {fileID: 1366510673}
+    - target: {fileID: 1591833352315507988, guid: 4f83911044979a04488f237a92af015e,
+        type: 3}
+      propertyPath: _bottles.Array.data[2]
+      value: 
+      objectReference: {fileID: 323477859}
+    - target: {fileID: 1591833352315507988, guid: 4f83911044979a04488f237a92af015e,
+        type: 3}
+      propertyPath: _bottles.Array.data[3]
+      value: 
+      objectReference: {fileID: 1789665590}
     - target: {fileID: 2828664754169924343, guid: 4f83911044979a04488f237a92af015e,
         type: 3}
       propertyPath: m_Size.y
@@ -18379,9 +18399,29 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1591833352315507988, guid: 4f83911044979a04488f237a92af015e,
         type: 3}
+      propertyPath: _bottles.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591833352315507988, guid: 4f83911044979a04488f237a92af015e,
+        type: 3}
       propertyPath: _bottles.Array.data[0]
       value: 
       objectReference: {fileID: 5851023519678664750}
+    - target: {fileID: 1591833352315507988, guid: 4f83911044979a04488f237a92af015e,
+        type: 3}
+      propertyPath: _bottles.Array.data[1]
+      value: 
+      objectReference: {fileID: 1366510673}
+    - target: {fileID: 1591833352315507988, guid: 4f83911044979a04488f237a92af015e,
+        type: 3}
+      propertyPath: _bottles.Array.data[2]
+      value: 
+      objectReference: {fileID: 323477859}
+    - target: {fileID: 1591833352315507988, guid: 4f83911044979a04488f237a92af015e,
+        type: 3}
+      propertyPath: _bottles.Array.data[3]
+      value: 
+      objectReference: {fileID: 1789665590}
     - target: {fileID: 2828664754169924343, guid: 4f83911044979a04488f237a92af015e,
         type: 3}
       propertyPath: m_Size.y

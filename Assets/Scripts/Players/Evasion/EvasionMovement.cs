@@ -1,26 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EvasionMovement : MonoBehaviour
 {
-    [SerializeField] private List<Transform> _spineParts = new List<Transform>();
-    [SerializeField] private Transform _hips;
+    [SerializeField] private Transform _spine;
     [SerializeField] private float _maxEvasionDistance;
-    [SerializeField] private AnimationCurve _spineBend;
     [SerializeField] private float _speed;
-    [SerializeField] private float _returnSpeed;
+    [SerializeField] private float _maxRotationAngle;
+    [SerializeField] private float _rotationSpeed;
 
-    private List<Vector3> _centerPositions = new List<Vector3>();
     private Vector3 _headColliderCenter;
+    private Quaternion _initialRotation;
     private Vector3 _currentEvasionDirection;
     private float _currentReturnSpeed;
 
     private void Awake()
     {
-        GetCenterPositions();
-
-        _currentReturnSpeed = 0f;
+        SetInitialValues();
     }
 
     protected virtual void Update()
@@ -33,61 +28,47 @@ public class EvasionMovement : MonoBehaviour
         _currentEvasionDirection = direction;
         Vector3 nextPositionOffset = _speed * Time.deltaTime * direction;
 
-        Vector3 headNextPosition = _headColliderCenter + GetEvasionDistance(_headColliderCenter, transform.position, nextPositionOffset, 1f);
+        Vector3 headNextPosition = _headColliderCenter + GetEvasionDistance(_headColliderCenter, transform.position, nextPositionOffset);
         transform.position = Vector3.MoveTowards(transform.position, headNextPosition, _speed * Time.deltaTime);
 
-        for (int i = 0; i < _spineParts.Count; i++)
-        {
-            float spineBendArgument = GetSpineBendArgument(_spineParts[i].position);
-            Vector3 spinePartEvasionDistance = GetEvasionDistance(_centerPositions[i], _spineParts[i].position, nextPositionOffset, _spineBend.Evaluate(spineBendArgument));
-            Vector3 spinePartNextPosition = _centerPositions[i] + spinePartEvasionDistance;
-            _spineParts[i].position = Vector3.MoveTowards(_spineParts[i].position, spinePartNextPosition, _speed * Time.deltaTime);
-        }
+        Quaternion evasionQuaternion = GetEvasionQuaternion(direction);
+        _spine.rotation = Quaternion.Lerp(_spine.rotation, evasionQuaternion, _rotationSpeed * Time.deltaTime);
     }
 
-    private float GetSpineBendArgument(Vector3 spinePart)
+    private Quaternion GetEvasionQuaternion(Vector3 direction)
     {
-        float distanceToBodyPart = spinePart.y - _hips.position.y;
-        float distanceToHead = transform.position.y - _hips.position.y;
+        Vector3 rotationAngle = _initialRotation.eulerAngles + direction * _maxRotationAngle;
 
-        return distanceToBodyPart / distanceToHead;
+        return Quaternion.Euler(rotationAngle);
     }
 
-    private Vector3 GetEvasionDistance(Vector3 center, Vector3 currentPosition, Vector3 nextPositionOffset, float spineBendModifier)
+    private Vector3 GetEvasionDistance(Vector3 center, Vector3 currentPosition, Vector3 nextPositionOffset)
     {
         var nextPosition = nextPositionOffset + currentPosition;
         Vector3 offset = nextPosition - center;
 
-        return Vector3.ClampMagnitude(offset, _maxEvasionDistance * spineBendModifier);
+        return Vector3.ClampMagnitude(offset, _maxEvasionDistance);
     }
 
-    private void GetCenterPositions()
+    private void SetInitialValues()
     {
         _headColliderCenter = transform.position;
-
-        foreach (var spinePart in _spineParts)
-        {
-            _centerPositions.Add(spinePart.position);
-        }
+        _initialRotation = _spine.rotation;
+        _currentReturnSpeed = 0f;
     }
 
     private void TryReturnToCenterPosition()
     {
-        SetReturnSpeed();
+        ChangeReturnSpeedValue();
 
         transform.position = TryGetReturnPosition(transform.position, _headColliderCenter);
-
-        for (int i = 0; i < _spineParts.Count; i++)
-        {
-            _spineParts[i].position = TryGetReturnPosition(_spineParts[i].position, _centerPositions[i]);
-        }
     }
 
-    private void SetReturnSpeed()
+    private void ChangeReturnSpeedValue()
     {
         if (_currentEvasionDirection == Vector3.zero)
         {
-            _currentReturnSpeed = _returnSpeed;
+            _currentReturnSpeed = _speed;
             return;
         }
 

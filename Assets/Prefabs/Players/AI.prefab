@@ -280,21 +280,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8449830331597264587}
     m_Modifications:
-    - target: {fileID: 5487309326860833399, guid: b93d19cbde990f54fa82d13fb022a1d9,
-        type: 3}
-      propertyPath: _chanceToEvade
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5487309326860833399, guid: b93d19cbde990f54fa82d13fb022a1d9,
-        type: 3}
-      propertyPath: _bottles.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5487309326860833399, guid: b93d19cbde990f54fa82d13fb022a1d9,
-        type: 3}
-      propertyPath: _headDirectionAngleDegree
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 6340678465944957527, guid: b93d19cbde990f54fa82d13fb022a1d9,
         type: 3}
       propertyPath: m_Name
