@@ -15,13 +15,13 @@ public class ScreenState : MonoBehaviour
         _isWonPanelOn = false;
 
         _watchdog.AIWon += () => TurnOnPanel(_levelFailedPanel, ref _isFailPanelOn, _isWonPanelOn);
-        _watchdog.PlayedWon += () => TurnOnPanel(_levelCompletedPanel, ref _isWonPanelOn, _isFailPanelOn); 
+        _watchdog.PlayerWon += () => TurnOnPanel(_levelCompletedPanel, ref _isWonPanelOn, _isFailPanelOn); 
     }
 
     private void OnDisable()
     {
         _watchdog.AIWon -= () => TurnOnPanel(_levelFailedPanel, ref _isFailPanelOn, _isWonPanelOn);
-        _watchdog.PlayedWon -= () => TurnOnPanel(_levelCompletedPanel, ref _isWonPanelOn, _isFailPanelOn);
+        _watchdog.PlayerWon -= () => TurnOnPanel(_levelCompletedPanel, ref _isWonPanelOn, _isFailPanelOn);
     }
 
     private void TurnOnPanel(GameObject panel,ref bool panelTurnedOnState, bool otherPanelTurnedOnState)

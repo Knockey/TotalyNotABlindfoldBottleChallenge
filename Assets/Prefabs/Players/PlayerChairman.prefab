@@ -502,6 +502,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2106897888819534780}
   - component: {fileID: 8338194490981316294}
+  - component: {fileID: 3749749801094668828}
+  - component: {fileID: 2163184520677351549}
   m_Layer: 0
   m_Name: PlayerChairman
   m_TagString: Untagged
@@ -544,6 +546,93 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3749749801094668828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3127307591765273007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fff0960ef4ea6e04eac66b4a7fd2189d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RigLayers:
+  - m_Rig: {fileID: 0}
+    m_Active: 1
+  m_Effectors: []
+--- !u!114 &2163184520677351549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3127307591765273007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2d8418b0b9634b1892b0268dd9c2743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boneShape: 1
+  drawBones: 1
+  drawTripods: 0
+  boneSize: 2
+  tripodSize: 1
+  boneColor: {r: 0, g: 0, b: 1, a: 0.5}
+  m_Transforms:
+  - {fileID: 8158848088074878283}
+  - {fileID: 886367221271136811}
+  - {fileID: 112598444833537739}
+  - {fileID: 5418897616840753753}
+  - {fileID: 5145710242922643132}
+  - {fileID: 3372163775520441582}
+  - {fileID: 3321719213623600391}
+  - {fileID: 3936976266457875676}
+  - {fileID: 7424040785825670611}
+  - {fileID: 115555944843091283}
+  - {fileID: 3761966324726632539}
+  - {fileID: 5874419452723229723}
+  - {fileID: 1929764512037632314}
+  - {fileID: 1940795551872793756}
+  - {fileID: 168988740112643803}
+  - {fileID: 4539308717068102467}
+  - {fileID: 795062084298939615}
+  - {fileID: 6517426635727494243}
+  - {fileID: 6733259129858152205}
+  - {fileID: 8116766464446656400}
+  - {fileID: 2434211206065741794}
+  - {fileID: 8545441610231824156}
+  - {fileID: 7822686528409685764}
+  - {fileID: 1035303545353920503}
+  - {fileID: 5342483693650919369}
+  - {fileID: 397814510408518216}
+  - {fileID: 5262317849881483264}
+  - {fileID: 5197812784891446139}
+  - {fileID: 1443645098200363367}
+  - {fileID: 6434446214112418787}
+  - {fileID: 6791243622421329153}
+  - {fileID: 3512067923546627749}
+  - {fileID: 6257634619303345808}
+  - {fileID: 1388799270675297873}
+  - {fileID: 6800154001960860586}
+  - {fileID: 7373169582811890219}
+  - {fileID: 7561501510494569878}
+  - {fileID: 1938331452220051005}
+  - {fileID: 9103623666680375231}
+  - {fileID: 3631452996165049824}
+  - {fileID: 1203435137901570069}
+  - {fileID: 1335369008792656135}
+  - {fileID: 4813991868674682456}
+  - {fileID: 218114776048649143}
+  - {fileID: 3260692318151321755}
+  - {fileID: 7545051694989297067}
+  - {fileID: 3834863045967906809}
+  - {fileID: 2147995063204853487}
+  - {fileID: 8171369694764857530}
+  - {fileID: 2632264366145093907}
+  - {fileID: 5685320494658347460}
+  - {fileID: 5681016051006303999}
 --- !u!1 &3182878837213078004
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,17 +870,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a37d705c8e9115e439ec799186182634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spineParts: []
-  _hips: {fileID: 0}
+  _spine: {fileID: 0}
   _maxEvasionDistance: 0.7
-  _spineBend:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
   _speed: 7
-  _returnSpeed: 1
+  _maxRotationAngle: 0
+  _rotationSpeed: 0
   _variableJoystick: {fileID: 0}
 --- !u!1 &3806684644451583071
 GameObject:

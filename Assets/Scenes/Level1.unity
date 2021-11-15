@@ -255,11 +255,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneSetup
       objectReference: {fileID: 0}
-    - target: {fileID: 5851023519537694512, guid: bd4195ee7aba0d04dba88675226ced15,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8918945515982562392, guid: bd4195ee7aba0d04dba88675226ced15,
         type: 3}
       propertyPath: m_RootOrder
