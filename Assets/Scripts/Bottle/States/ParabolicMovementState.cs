@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class ParabolicMovementState : State
 {
-    [SerializeField] private List<Transform> _heads = new List<Transform>();
-    [SerializeField] private float _chanceToChooseHead;
+    [SerializeField] private Transform _player;
+    [SerializeField] private List<Transform> _ai = new List<Transform>();
+    [SerializeField] private float _chanceToChoosePlayer;
+    [SerializeField] private float _chanceToChooseAI;
     [SerializeField] private AnimationCurve _parabolaCurve;
     [SerializeField] private AnimationCurve _acceleration;
     [SerializeField] private float _speedModifier;
@@ -95,20 +97,26 @@ public class ParabolicMovementState : State
 
     private Vector3 ChooseNewDirection()
     {
-        if (Random.Range(0, 100) < _chanceToChooseHead)
-        {
+        if (Random.Range(0, 100) < _chanceToChoosePlayer)
+            return GetDirection(GetPlayerDirection);
+
+        if (Random.Range(0, 100) < _chanceToChooseAI)
             return GetDirection(GetNewDirectionFromList);
-        }
 
         return GetDirection(GetNewDirectionFromCapsule);
     }
 
     private Vector3 GetDirection(System.Func<Vector3> getDirectionMethod)
     {
-        Vector3 newDirection = getDirectionMethod().normalized;
+        Vector3 newDirection = (getDirectionMethod() - transform.position).normalized;
         newDirection.y = 0;
 
         return newDirection;
+    }
+
+    private Vector3 GetPlayerDirection()
+    {
+        return _player.position;
     }
 
     private Vector3 GetNewDirectionFromCapsule()
@@ -117,11 +125,11 @@ public class ParabolicMovementState : State
         newDirection.x += Random.Range(-_sphereDirectionOffset.x, _sphereDirectionOffset.x);
         newDirection.z += Random.Range(-_sphereDirectionOffset.z, _sphereDirectionOffset.z);
 
-        return newDirection - transform.position;
+        return newDirection;
     }
 
     private Vector3 GetNewDirectionFromList()
     {
-        return _heads[Random.Range(0, _heads.Count)].position - transform.position;
+        return _ai[Random.Range(0, _ai.Count)].position;
     }
 }
