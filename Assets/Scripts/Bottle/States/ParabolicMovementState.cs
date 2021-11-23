@@ -24,7 +24,7 @@ public class ParabolicMovementState : State
     private float _parabolaLength;
     private float _defaultYPosition;
 
-    public event System.Action<Vector3, Vector3> ParabolicMovementStarted;
+    public event System.Action<Vector3, Vector3, ParabolicMovementState> ParabolicMovementStarted;
     public event System.Action<float> RemainDistanceChanged;
     public event System.Action BottleReseted;
 
@@ -85,7 +85,7 @@ public class ParabolicMovementState : State
         _finalPosition = ReversedRaycast.GetRaycastHitPosition(_startPosition, direction, _raycastLayer);
         _parabolaLength = Vector3.Distance(_startPosition, _finalPosition);
 
-        ParabolicMovementStarted?.Invoke(_startPosition, _finalPosition);
+        ParabolicMovementStarted?.Invoke(_startPosition, _finalPosition, this);
     }
 
     private float GetNormalizedPassedDistance()

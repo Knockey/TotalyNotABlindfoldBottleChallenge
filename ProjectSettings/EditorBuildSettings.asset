@@ -44,7 +44,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level2.unity
     guid: ad53370264c0979479ed6161f4c6192d
-  - enabled: 1
-    path: Assets/Dance Animations/Dance_Animations___Example_Scene.unity
-    guid: 0caacaea2792e8c4f922fcbbd2c54586
   m_configObjects: {}

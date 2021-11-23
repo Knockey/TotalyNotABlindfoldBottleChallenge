@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class TimeControl : MonoBehaviour
 {
@@ -6,15 +7,12 @@ public class TimeControl : MonoBehaviour
     [SerializeField] private float _minTimeScale;
     [SerializeField] private BottleApproachHandle _bottleApproachHandler;
     [SerializeField] private HitDetection _hitDetection;
-    [SerializeField] private TapPanel _tapPanel;
 
     private void OnEnable()
     {
         _bottleApproachHandler.BottleApproaching += OnBottleApproaching;
         _bottleApproachHandler.BottleFlewAway += OnBottleFlewAway;
         _hitDetection.ColliderHitedWithType += OnColliderHitedWithType;
-        _tapPanel.PanelEnabled += OnTapPanelEnabled;
-        _tapPanel.PanelTaped += OnPanelTaped;
     }
 
     private void OnDisable()
@@ -22,8 +20,6 @@ public class TimeControl : MonoBehaviour
         _bottleApproachHandler.BottleApproaching -= OnBottleApproaching;
         _bottleApproachHandler.BottleFlewAway -= OnBottleFlewAway;
         _hitDetection.ColliderHitedWithType -= OnColliderHitedWithType;
-        _tapPanel.PanelEnabled -= OnTapPanelEnabled;
-        _tapPanel.PanelTaped -= OnPanelTaped;
     }
 
     private void OnValidate()
@@ -52,16 +48,6 @@ public class TimeControl : MonoBehaviour
     {
         if (movement is PlayerEvasionMovement)
             SetTimeScale(1f);
-    }
-
-    private void OnTapPanelEnabled()
-    {
-        SetTimeScale(0f);
-    }
-
-    private void OnPanelTaped()
-    {
-        SetTimeScale(1f);
     }
 
     private void SetTimeScale(float scaleValue)
