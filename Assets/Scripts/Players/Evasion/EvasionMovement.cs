@@ -10,13 +10,13 @@ public class EvasionMovement : MonoBehaviour
 
     private void Awake()
     {
-        _initialRotation = _spine.rotation;
+        _initialRotation = _spine.localRotation;
     }
 
     protected void TryEvade(Vector3 direction)
     {
         Quaternion evasionQuaternion = GetEvasionQuaternion(direction);
-        _spine.rotation = Quaternion.Lerp(_spine.rotation, evasionQuaternion, _rotationSpeed * Time.deltaTime);
+        _spine.localRotation = Quaternion.Lerp(_spine.localRotation, evasionQuaternion, _rotationSpeed * Time.deltaTime);
     }
 
     private Quaternion GetEvasionQuaternion(Vector3 direction)

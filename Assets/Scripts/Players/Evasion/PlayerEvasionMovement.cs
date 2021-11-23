@@ -43,7 +43,6 @@ public class PlayerEvasionMovement : EvasionMovement
         Vector3 headNextPosition = _headColliderCenter + GetEvasionDistance(_headColliderCenter, transform.position, nextPositionOffset);
 
         transform.position = Vector3.MoveTowards(transform.position, headNextPosition, _speed * Time.deltaTime);
-
     }
 
     private Vector3 GetEvasionDistance(Vector3 center, Vector3 currentPosition, Vector3 nextPositionOffset)
