@@ -14,10 +14,10 @@ public class ParabolicMovementState : State
 
     private readonly List<Vector3> _directions = new List<Vector3>
     {
-        Vector3.forward,
-        Vector3.back,
-        Vector3.left,
-        Vector3.right
+        Vector3.forward + Vector3.left,
+        Vector3.back + Vector3.left,
+        Vector3.forward + Vector3.right,
+        Vector3.back + Vector3.right
     };
     private Vector3 _direction;
     private Vector3 _startPosition;
