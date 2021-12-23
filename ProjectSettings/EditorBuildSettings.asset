@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Plugins/TypedScenes/Samples/SampleScene.unity
     guid: 4dff56f8ac98d11429bb3f0e5eca0e1e
   - enabled: 1
