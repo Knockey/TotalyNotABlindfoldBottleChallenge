@@ -9,7 +9,7 @@ public class PlayersConditionWatchdog : MonoBehaviour
     private int _countOfAI;
     private int _deadAICount;
 
-    public event Action PlayedWon;
+    public event Action PlayerWon;
     public event Action AIWon;
 
     private void OnEnable()
@@ -52,7 +52,7 @@ public class PlayersConditionWatchdog : MonoBehaviour
         _deadAICount++;
 
         if (_deadAICount == _countOfAI)
-            PlayedWon?.Invoke();
+            PlayerWon?.Invoke();
     }
 
     private void GetAICount()

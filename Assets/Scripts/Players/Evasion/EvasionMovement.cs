@@ -1,72 +1,28 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EvasionMovement : MonoBehaviour
 {
-    [SerializeField] private Transform _upperTorso;
-    [SerializeField] private float _maxEvasionDistance;
-    [SerializeField] private float _upperTorsoEvasionModifier; 
-    [SerializeField] private float _speed;
-    [SerializeField] private float _returnSpeed;
+    [SerializeField] private Transform _spine;
+    [SerializeField] private float _maxRotationAngle;
+    [SerializeField] private float _rotationSpeed;
 
-    private Vector3 _headColliderCenter;
-    private Vector3 _upperTorsoCenter;
-    private Vector3 _currentEvasionDirection;
-    private float _currentReturnSpeed;
+    private Quaternion _initialRotation;
 
     private void Awake()
     {
-        _headColliderCenter = transform.position;
-        _upperTorsoCenter = _upperTorso.position;
-        _currentReturnSpeed = _returnSpeed;
+        _initialRotation = _spine.localRotation;
     }
 
-    private void OnValidate()
+    protected void TryEvade(Vector3 direction)
     {
-        if (_upperTorsoEvasionModifier > 1 || _upperTorsoEvasionModifier < 0)
-            _upperTorsoEvasionModifier = 1;
+        Quaternion evasionQuaternion = GetEvasionQuaternion(direction);
+        _spine.localRotation = Quaternion.Lerp(_spine.localRotation, evasionQuaternion, _rotationSpeed * Time.deltaTime);
     }
 
-    protected virtual void Update()
+    private Quaternion GetEvasionQuaternion(Vector3 direction)
     {
-        SetReturnSpeed();
-        TryReturnToCenterPosition();
-    }
+        Vector3 rotationAngle = _initialRotation.eulerAngles + direction * _maxRotationAngle;
 
-    protected void TryMove(Vector3 direction)
-    {
-        _currentEvasionDirection = direction;
-        Vector3 nextPositionOffset = _speed * Time.fixedDeltaTime * direction;
-
-        transform.position = _headColliderCenter + GetEvasionDistance(_headColliderCenter, transform.position, nextPositionOffset);
-        _upperTorso.position = _upperTorsoCenter + GetEvasionDistance(_upperTorsoCenter, _upperTorso.position, nextPositionOffset) * _upperTorsoEvasionModifier;
-    }
-
-    private void SetReturnSpeed()
-    {
-        if (_currentEvasionDirection == Vector3.zero)
-        {
-            _currentReturnSpeed = _returnSpeed;
-            return;
-        }
-
-        _currentReturnSpeed = 0f;
-    }
-
-    private void TryReturnToCenterPosition()
-    {
-        if (_headColliderCenter != transform.position)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, _headColliderCenter, _currentReturnSpeed * Time.deltaTime);
-            _upperTorso.position = Vector3.MoveTowards(_upperTorso.position, _upperTorsoCenter, _currentReturnSpeed * Time.deltaTime);
-        }
-    }
-
-    private Vector3 GetEvasionDistance(Vector3 center, Vector3 currentPosition, Vector3 nextPositionOffset)
-    {
-        var nextPosition = nextPositionOffset + currentPosition;
-        Vector3 offset = nextPosition - center;
-
-        return Vector3.ClampMagnitude(offset, _maxEvasionDistance);
+        return Quaternion.Euler(rotationAngle);
     }
 }

@@ -20,7 +20,7 @@ public class ArrowRender : MonoBehaviour
         RenderArrowAndShadow();
     }
 
-    private void OnParabolicMovementStarted(Vector3 bottleStartPosition, Vector3 bottleFinishPosition)
+    private void OnParabolicMovementStarted(Vector3 bottleStartPosition, Vector3 bottleFinishPosition, ParabolicMovementState bottle)
     {
         bottleFinishPosition.y = transform.position.y;
         transform.LookAt(bottleFinishPosition);

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class TimeControl : MonoBehaviour
 {
@@ -6,15 +7,12 @@ public class TimeControl : MonoBehaviour
     [SerializeField] private float _minTimeScale;
     [SerializeField] private BottleApproachHandle _bottleApproachHandler;
     [SerializeField] private HitDetection _hitDetection;
-    [SerializeField] private TapPanel _tapPanel;
 
     private void OnEnable()
     {
         _bottleApproachHandler.BottleApproaching += OnBottleApproaching;
         _bottleApproachHandler.BottleFlewAway += OnBottleFlewAway;
         _hitDetection.ColliderHitedWithType += OnColliderHitedWithType;
-        _tapPanel.PanelEnabled += OnTapPanelEnabled;
-        _tapPanel.PanelTaped += OnPanelTaped;
     }
 
     private void OnDisable()
@@ -22,8 +20,6 @@ public class TimeControl : MonoBehaviour
         _bottleApproachHandler.BottleApproaching -= OnBottleApproaching;
         _bottleApproachHandler.BottleFlewAway -= OnBottleFlewAway;
         _hitDetection.ColliderHitedWithType -= OnColliderHitedWithType;
-        _tapPanel.PanelEnabled -= OnTapPanelEnabled;
-        _tapPanel.PanelTaped -= OnPanelTaped;
     }
 
     private void OnValidate()
@@ -36,31 +32,27 @@ public class TimeControl : MonoBehaviour
     {
         if (distance < _slowMotionDistance)
         {
-            Time.timeScale = _minTimeScale;
+            SetTimeScale(_minTimeScale);
             return;
         }
 
-        Time.timeScale = 1;
+        SetTimeScale(1f);
     }
 
     private void OnBottleFlewAway()
     {
-        Time.timeScale = 1;
+        SetTimeScale(1f);
     }
 
     private void OnColliderHitedWithType(EvasionMovement movement)
     {
         if (movement is PlayerEvasionMovement)
-            Time.timeScale = 1;
+            SetTimeScale(1f);
     }
 
-    private void OnTapPanelEnabled()
+    private void SetTimeScale(float scaleValue)
     {
-        Time.timeScale = 0;
-    }
-
-    private void OnPanelTaped()
-    {
-        Time.timeScale = 1;
+        Time.timeScale = scaleValue;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
     }
 }

@@ -13,7 +13,7 @@ public class RopeRenderer : MonoBehaviour
         _lineRenderer = GetComponent<LineRenderer>();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         _lineRenderer.SetPosition(0, _ropeConnector.position);
         _lineRenderer.SetPosition(1, _snapPoint.position);

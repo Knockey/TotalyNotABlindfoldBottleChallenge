@@ -3,12 +3,15 @@ using UnityEngine;
 
 public class AIEvasion : EvasionMovement
 {
+    private const float EvasionAngle = 90f;
+
     [SerializeField] private List<ParabolicMovementState> _bottles;
     [SerializeField] private float _chanceToEvade;
-    [SerializeField] private float _evasionSpeed;
-    [SerializeField] private float _headDirectionAngleDegree;
+    [SerializeField] private LayerMask _layerMask;
 
     private Vector3 _evasionDirection;
+    private bool _isNotEvading = true;
+    private ParabolicMovementState _currentEvasionBottle;
 
     private void OnEnable()
     {
@@ -26,17 +29,35 @@ public class AIEvasion : EvasionMovement
         }
     }
 
-    protected override void Update()
+    private void Update()
     {
-        TryMove(_evasionDirection);
-        base.Update();
+        TryEvade(_evasionDirection);
     }
 
-    private void OnParabolicMovementStarted(Vector3 startPosition, Vector3 finalPosition)
+    private void OnParabolicMovementStarted(Vector3 startPosition, Vector3 finalPosition, ParabolicMovementState bottle)
     {
-        if (Random.Range(0, 100) < _chanceToEvade && CheckDirectionTowardsHead(startPosition, finalPosition))
+        TryResetEvasionState(bottle);
+
+        if (Random.Range(0, 100) < _chanceToEvade && _isNotEvading)
+            SetEvasionDirection(startPosition, finalPosition, bottle);
+    }
+
+    private void TryResetEvasionState(ParabolicMovementState bottle)
+    {
+        if (bottle == _currentEvasionBottle || _currentEvasionBottle == null)
         {
-            _evasionDirection = GetEvasionDirection(startPosition, finalPosition); 
+            _isNotEvading = true;
+            _currentEvasionBottle = null;
+        }
+    }
+
+    private void SetEvasionDirection(Vector3 startPosition, Vector3 finalPosition, ParabolicMovementState bottle)
+    {
+        if (IsDirectedTowardsHead(startPosition, finalPosition))
+        {
+            _evasionDirection = GetEvasionDirection(startPosition, finalPosition);
+            _isNotEvading = false;
+            _currentEvasionBottle = bottle;
 
             return;
         }
@@ -47,25 +68,19 @@ public class AIEvasion : EvasionMovement
     private static Vector3 GetEvasionDirection(Vector3 startPosition, Vector3 finalPosition)
     {
         Vector3 direction = (finalPosition - startPosition).normalized;
-        float xDirection = direction.x;
+        Quaternion evasionQuaternion = new Quaternion(Vector3.up.x, Vector3.up.y, Vector3.up.z, EvasionAngle);
 
-        direction.x = direction.z;
-        direction.y = 0f;
-        direction.z = xDirection;
-
-        return direction;
+        return (evasionQuaternion * direction).normalized;
     }
 
-    private bool CheckDirectionTowardsHead(Vector3 startPosition, Vector3 finalPosition)
+    private bool IsDirectedTowardsHead(Vector3 startPosition, Vector3 finalPosition)
     {
         Vector3 toFinalPositionDirection = finalPosition - startPosition;
-        Vector3 toHeadDirection = transform.position - startPosition;
 
-        toFinalPositionDirection.y = 0;
-        toHeadDirection.y = 0;
+        startPosition.y = transform.position.y;
 
-        float angle = Vector3.Angle(toFinalPositionDirection, toHeadDirection);
+        ReversedRaycast.GetRaycastHitPosition(startPosition, toFinalPositionDirection, out RaycastHit hitObj, _layerMask);
 
-        return angle < _headDirectionAngleDegree || angle > 360f - _headDirectionAngleDegree;
+        return hitObj.collider != null && hitObj.collider.gameObject == gameObject;
     }
 }
