@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 
 public class ParabolicMovementState : State
 {
     [SerializeField] private List<Transform> _heads = new List<Transform>();
     [SerializeField] private AnimationCurve _parabolaCurve;
     [SerializeField] private float _chanceToChooseHead;
-    [SerializeField] private float _speed;
+    [SerializeField] private float _initialSpeed;
     [SerializeField] private float _speedModifier;
     [SerializeField] private Vector3 _sphereDirectionOffset;
     [SerializeField] private LayerMask _raycastLayer;
@@ -25,6 +25,8 @@ public class ParabolicMovementState : State
     private float _currentSpeed;
     private float _movementTime;
 
+    public event UnityAction<Vector3, Vector3> ParabolicMovementStarted;
+
     private void Start()
     {
         _direction = _directions[Random.Range(0, _directions.Count)];
@@ -35,8 +37,8 @@ public class ParabolicMovementState : State
     private void OnEnable()
     {
         _direction = ChooseNewDirection();
-        _currentSpeed = _speed;
-        _movementTime = 0;
+        _currentSpeed = _initialSpeed;
+        _movementTime = 0f;
 
         SetPositions(_direction);
     }
@@ -44,11 +46,8 @@ public class ParabolicMovementState : State
     private void Update()
     {
         MoveTowardsDirection();
-    }
 
-    private void FixedUpdate()
-    {
-        _currentSpeed += _speedModifier;
+        _currentSpeed += _speedModifier * Time.deltaTime;
     }
 
     private void MoveTowardsDirection()
@@ -64,6 +63,8 @@ public class ParabolicMovementState : State
     {
         _startPosition = transform.position;
         _finalPosition = ReversedRaycast.GetRaycastHitPosition(_startPosition, direction, _raycastLayer);
+
+        ParabolicMovementStarted?.Invoke(_startPosition, _finalPosition);
     }
 
     private Vector3 ChooseNewDirection()
